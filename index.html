@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Performance Task 3</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2> NUMBER CALCULATOR</h2>
+        <!-- 25 input boxes -->
+        <input type="text" class="numberInput" placeholder="Enter a number, cutie">
+        <input type="text" class="numberInput" placeholder="Enter another number">
+        <input type="text" class="numberInput" placeholder="Enter another number">
+        <input type="text" class="numberInput" placeholder="Enter another number">
+        <input type="text" class="numberInput" placeholder="Enter another number">
+        <input type="text" class="numberInput" placeholder="Enter another number">
+        <input type="text" class="numberInput" placeholder="Enter another number">
+        <input type="text" class="numberInput" placeholder="Enter another number">
+        <input type="text" class="numberInput" placeholder="Enter another number">
+        <input type="text" class="numberInput" placeholder="Enter another number">
+        <input type="text" class="numberInput" placeholder="Enter another number">
+        <input type="text" class="numberInput" placeholder="Enter another number">
+        <input type="text" class="numberInput" placeholder="Enter another number">
+        <input type="text" class="numberInput" placeholder="Enter another number">
+        <input type="text" class="numberInput" placeholder="Enter another number">
+        <input type="text" class="numberInput" placeholder="Enter another number">
+        <input type="text" class="numberInput" placeholder="Enter another number">
+        <input type="text" class="numberInput" placeholder="Enter another number">
+        <input type="text" class="numberInput" placeholder="Enter another number">
+        <input type="text" class="numberInput" placeholder="Enter another number">
+        <input type="text" class="numberInput" placeholder="Enter another number">
+        <input type="text" class="numberInput" placeholder="Enter another number">
+        <input type="text" class="numberInput" placeholder="Enter another number">
+        <input type="text" class="numberInput" placeholder="Enter another number">
+        <input type="text" class="numberInput" placeholder="Enter another number">
+
+        <button onclick="addNumber()">Get the numbers and sum</button>
+        <div id="numberList"></div>
+        <div id="sumDisplay"></div>
+    </div>
+
+    <script>
+        let evenNumbers = [];
+        let oddNumbers = [];
+
+        function addNumber() {
+            let numbers = document.querySelectorAll(".numberInput");
+            evenNumbers = [];
+            oddNumbers = [];
+
+            numbers.forEach((input, index) => {
+                let value = parseInt(input.value);
+                if (!isNaN(value)) {
+                    if (value % 2 === 0) evenNumbers.push(value);
+                    else oddNumbers.push(value);
+                } else {
+                    alert("Please enter valid numbers in all input boxes.");
+                    return;
+                }
+            });
+
+            displayNumbersAndParity();
+            displaySum();
+        }
+
+        function displayNumbersAndParity() {
+            document.getElementById("numberList").innerHTML = "Numbers and their equivalent: <br>";
+            evenNumbers.forEach(num => {
+                document.getElementById("numberList").innerHTML += num + " - Even<br>";
+            });
+            oddNumbers.forEach(num => {
+                document.getElementById("numberList").innerHTML += num + " - Odd<br>";
+            });
+        }
+
+        function displaySum() {
+            let evenSum = evenNumbers.reduce((total, num) => total + num, 0);
+            let oddSum = oddNumbers.reduce((total, num) => total + num, 0);
+            
+            document.getElementById("sumDisplay").innerHTML = "Sum of Even Numbers: " + evenSum + "<br>";
+            document.getElementById("sumDisplay").innerHTML += "Sum of Odd Numbers: " + oddSum;
+        }
+    </script>
+</body>
+</html>
